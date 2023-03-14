@@ -4,24 +4,21 @@ class A{
 	A(){
 		System.out.println("You are in A");
 	}
-	
 }
 
 class B{
 	B(){
 		System.out.println("You are in B");
 	}
-	
-	
 }
+
 class C extends A{
-	B obj1 = new B();
+	B object1 = new B();
 }
 
-public class abc3 {
-
+public class  ABC3 {
+	
 	public static void main(String[] args) {
-
-		C obj2 = new C();
+		C object2 = new C();
 	}
 }

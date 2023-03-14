@@ -4,61 +4,46 @@ import java.util.Arrays;
 
 public class StackFixedDynamic2 {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		int arr[];
-		
-		stack element1 = new fixedStack();
-		stack element2 = new dynamicStack();
+	public static void main(String[] args) {		
+		Stack fixedStack = new FixedStack();
+		Stack dynamicStack = new DynamicStack();
 		
 		 System.out.println("Fixed Stack :" );
-	      element1.show();
-		
+	      fixedStack.show();
 		
 	      System.out.println("\nDynamic Stack :" );
-	      element2.show();
+	      dynamicStack.show();
 	}
 
 }
 
-interface stack{
+interface Stack{
 	public void push(int i);
 	public void pop();
 	public void show();
 }
 
 
-class fixedStack implements stack{
-	int arr[] = new int[5];
+class FixedStack implements Stack{
+	int arrayFixed[] = new int[5];
 	int top=-1;
 	
-
 	@Override
 	public void push(int a) {
 		// TODO Auto-generated method stub
-		if(top<=arr.length) {
-			System.out.println("Stack is Full");
-			
+		if(top <= arrayFixed.length) {
+			System.out.println("Stack is Full");	
 		}
-		
 		else {
-		
-		for(int i=0;i<arr.length;i++) {
-			if(top < arr.length) {
-				arr[++top]=a;
-				
-				break;
-				
-				
+			for(int i=0;i<arrayFixed.length;i++) {
+				if(top < arrayFixed.length) {
+					arrayFixed[++top]=a;
+					break;
+				}
 			}
-			
-		}
-		
-		}
-		
+		}	
 	}
-
+	
 	@Override
 	public void pop() {
 			top--;	
@@ -70,33 +55,28 @@ class fixedStack implements stack{
 			System.out.println("Stack is Empty");	
 		}
 		else {
-			
-		for(int i=0;i<=top;i++) {
-			System.out.println(arr[i]);
-		}
-		
+			for(int i=0;i<=top;i++) {
+				System.out.println(arrayFixed[i]);
+			}	
 		}
 	}
 		
 	
 }
 
-class dynamicStack implements stack{
+class DynamicStack implements Stack{
 	
 	ArrayList<Integer> dynamic = new ArrayList();
 
 	@Override
-	public void push(int i) {
-		// TODO Auto-generated method stub
-		dynamic.add(i);
-		
+	public void push(int i) {	
+		dynamic.add(i);	
 	}
 
 	@Override
 	public void pop() {
 		int length = dynamic.size();
-		dynamic.remove(length-1);
-		
+		dynamic.remove(length-1);	
 	}
 
 	@Override
@@ -108,8 +88,7 @@ class dynamicStack implements stack{
 			for(Integer a:dynamic) {
 				System.out.println(a);
 			}
-		}
-		
+		}	
 	}
 	
 }

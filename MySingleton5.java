@@ -2,24 +2,19 @@ package assignment1;
 
 class MySingleton5 {
    public static void main(String[] args) {
-      single obj = single.method();
-      System.out.println(obj);
-     
+      Single object1 = Single.getInstance();
+      Single object2 = Single.getInstance();
+      System.out.println(object1 +" "+ object2);
    }
 }
 
-class single{
-	
-   static single object = new single() ;
-
-   private single() {
+class Single{
+   static Single object = new Single() ;
+   private Single() {
 	   
    }
-
-   public static single method() {
+   public static Single getInstance() {
 	   return object;
 
-      }
-
-      
+   }     
 }
