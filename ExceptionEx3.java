@@ -23,8 +23,8 @@ class Sample1{
 public class ExceptionEx3 {
 
 	public static void main(String[] args) {
-		Sample1 s = new Sample1();
-		s.mth1();
+		Sample1 sample = new Sample1();
+		sample.mth1();
 	}
 
 }

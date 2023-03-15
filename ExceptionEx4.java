@@ -6,7 +6,7 @@ public class ExceptionEx4 {
 		 int firstValue = 5;
 		 int secondValue = 0;
 		 try {
-			 int result = firstValue/secondValue;
+			 int result = firstValue / secondValue;
 			 System.out.println(result); 
 		 }
 		 catch(ArithmeticException e) {

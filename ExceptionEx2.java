@@ -1,6 +1,6 @@
 package assignment2;
 
-class SampleTryCatch{
+class SampleTryCatch {
 	public void mth1() {
 		mth2();
 		System.out.println("caller");
@@ -25,8 +25,8 @@ class SampleTryCatch{
 public class ExceptionEx2 {
 
 	public static void main(String[] args) {
-		SampleTryCatch s = new SampleTryCatch();
-		s.mth1();
+		SampleTryCatch sample = new SampleTryCatch();
+		sample.mth1();
 	}
 
 }

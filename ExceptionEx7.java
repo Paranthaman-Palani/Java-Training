@@ -13,12 +13,11 @@ public class ExceptionEx7 {
 			 try {
 				 numerator = scanner.nextInt();
 				 divisor = scanner.nextInt();
-				 
 				 int result = numerator / divisor;
 				 System.out.println(result);
 			 }
-			 catch (InputMismatchException e){
-					 System.exit(0); 
+			 catch (InputMismatchException e) {
+				 System.exit(0); 
 			 }
 			 catch (ArithmeticException ex) {
 				 System.out.println("Divded by Zero");
