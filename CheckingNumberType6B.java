@@ -55,30 +55,30 @@ public class CheckingNumberType6B {
 			
 			switch(choice) {
 				case 1: 
-						if(isArmstrongNumber(a)) {
-							System.out.println(a + " is an ArmStrong Number");
-						}
-						else {
-							System.out.println(a + " is not an ArmStrong Number");
-						}
-						break;
+					if(isArmstrongNumber(a)) {
+						System.out.println(a + " is an ArmStrong Number");
+					}
+					else {
+						System.out.println(a + " is not an ArmStrong Number");
+					}
+					break;
 				case 2: 
-						if(isPerfectNumber(a)) {
-							System.out.println(a + " is an Perfect Number");
-						}
-						else {
-							System.out.println(a + " is not an Perfect Number");
-						}
-						break;
+					if(isPerfectNumber(a)) {
+						System.out.println(a + " is an Perfect Number");
+					}
+					else {
+						System.out.println(a + " is not an Perfect Number");
+					}
+					break;
 				case 3: 
-						if(isPalindroimeNumber(a)) {
-							System.out.println(a + " is an Palindrome Number");
-						}
-						else {
-							System.out.println(a + " is not an Palindrome Number");
-						
-						}
-						break;
+					if(isPalindroimeNumber(a)) {
+						System.out.println(a + " is an Palindrome Number");
+					}
+					else {
+						System.out.println(a + " is not an Palindrome Number");
+					
+					}
+					break;
 				
 			}
 			

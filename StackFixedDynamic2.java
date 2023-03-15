@@ -17,14 +17,14 @@ public class StackFixedDynamic2 {
 
 }
 
-interface Stack{
+interface Stack {
 	public void push(int i);
 	public void pop();
 	public void show();
 }
 
 
-class FixedStack implements Stack{
+class FixedStack implements Stack {
 	int arrayFixed[] = new int[5];
 	int top=-1;
 	
@@ -35,9 +35,9 @@ class FixedStack implements Stack{
 			System.out.println("Stack is Full");	
 		}
 		else {
-			for(int i=0;i<arrayFixed.length;i++) {
+			for(int i=0; i<arrayFixed.length; i++) {
 				if(top < arrayFixed.length) {
-					arrayFixed[++top]=a;
+					arrayFixed[++top] = a;
 					break;
 				}
 			}
@@ -64,28 +64,28 @@ class FixedStack implements Stack{
 	
 }
 
-class DynamicStack implements Stack{
+class DynamicStack implements Stack {
 	
-	ArrayList<Integer> dynamic = new ArrayList();
+	ArrayList<Integer> dynamicList = new ArrayList();
 
 	@Override
 	public void push(int i) {	
-		dynamic.add(i);	
+		dynamicList.add(i);	
 	}
 
 	@Override
 	public void pop() {
-		int length = dynamic.size();
-		dynamic.remove(length-1);	
+		int length = dynamicList.size();
+		dynamicList.remove(length-1);	
 	}
 
 	@Override
 	public void show() {
-		if(dynamic.size()==0) {
+		if(dynamicList.size() == 0) {
 			System.out.println("Stack is Empty");	
 		}
 		else {
-			for(Integer a:dynamic) {
+			for(Integer a : dynamicList) {
 				System.out.println(a);
 			}
 		}	

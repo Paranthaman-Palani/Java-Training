@@ -9,7 +9,7 @@ public class PassByValAndRef7 {
 	}
 	
 	static int[] passByReference(int a[]) {
-		a[2]=9;
+		a[2] = 9;
 		return a;
 	}
 
