@@ -7,8 +7,8 @@ class SampleTryCatch {
 	}
 	public void mth2() {
 		try {
-//			int c = 6/0;
-//			System.out.println(c);
+			//int c = 6/0;
+			//System.out.println(c);
 			return;
 		}
 		catch(Exception e) {
