@@ -3,7 +3,7 @@ package assignment2;
 class Base {
 	Base() {
 		int a = 5, b = 0;
-		int c = b / a;
+		int c = a / b;
 	}
 }
 
@@ -15,7 +15,7 @@ class Derived extends Base {
 
 public class ExceptionEx6 {
 	public static void main(String[] args) throws Exception {
-		Base base =  new Derived();	
+		Derived base = new Derived();
 	}
 
 }

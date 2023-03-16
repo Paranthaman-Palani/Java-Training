@@ -1,24 +1,21 @@
 package assignment2;
 
-class Sample1{
+class Sample1 {
 	public void mth1() {
 		mth2();
 		System.out.println("caller");
 	}
+
 	public void mth2() {
 		try {
 			System.exit(0);
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println("catch-mth2");
-		}
-		finally {
+		} finally {
 			System.out.println("finally-mth2");
 		}
 	}
 }
-
-
 
 public class ExceptionEx3 {
 

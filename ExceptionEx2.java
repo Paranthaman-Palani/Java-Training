@@ -5,22 +5,19 @@ class SampleTryCatch {
 		mth2();
 		System.out.println("caller");
 	}
+
 	public void mth2() {
 		try {
-			//int c = 6/0;
-			//System.out.println(c);
+			// int c = 6/0;
+			// System.out.println(c);
 			return;
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			System.out.println("catch-mth2");
-		}
-		finally {
+		} finally {
 			System.out.println("finally-mth2");
 		}
 	}
 }
-
-
 
 public class ExceptionEx2 {
 
