@@ -1,40 +1,35 @@
 package assignment3;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.Calendar;
+
 public class MultiThreading4 {
-
 	public static void main(String[] args) {
-		int hour = 0;
-		int minute = 0;
-		int second = 0;
+		ExecutorService es = Executors.newFixedThreadPool(10);
+		
+		es.execute(()->{ 
+				Time.startRun();
+		});
+		
+		es.shutdown();
+	}
+}
 
+class Time {
+	static void startRun() {
 		try {
-			while (true) {
-				// clear output screen
-				System.out.print("\033[H\033[2J");
-
-				System.out.printf("\n %02d : %02d : %02d ", hour, minute, second);
-
-				second++;
-
-				if (second == 60) {
-					minute += 1;
-					second = 0;
-				}
-				if (minute == 60) {
-					hour += 1;
-					minute = 0;
-				}
-				if (hour == 24) {
-					hour = 0;
-					minute = 0;
-					second = 0;
-				}
-
+			while(true) {
+				Calendar Present_time = Calendar.getInstance();
+				int hour = Present_time.get(Calendar.HOUR_OF_DAY);
+				int minute = Present_time.get(Calendar.MINUTE);
+				int second = Present_time.get(Calendar.SECOND);
+				System.out.printf("%02d:%02d:%02d\n", hour, minute, second);
 				Thread.sleep(1000);
 			}
-		} catch (Exception e) {
-			System.out.println(e);
+		}
+		catch (Exception e){
+			e.printStackTrace();
 		}
 	}
-
 }
