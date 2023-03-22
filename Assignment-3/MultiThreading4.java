@@ -6,10 +6,10 @@ import java.util.Calendar;
 
 public class MultiThreading4 {
 	public static void main(String[] args) {
-		ExecutorService es = Executors.newFixedThreadPool(10);
+		ExecutorService es = Executors.newFixedThreadPool(1);
 		
 		es.execute(()->{ 
-				Time.startRun();
+				Time.start();
 		});
 		
 		es.shutdown();
@@ -17,7 +17,7 @@ public class MultiThreading4 {
 }
 
 class Time {
-	static void startRun() {
+	static void start() {
 		try {
 			while(true) {
 				Calendar Present_time = Calendar.getInstance();
