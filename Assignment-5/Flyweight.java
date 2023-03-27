@@ -12,9 +12,9 @@ public class Flyweight {
 			System.out.println(angryBird);
 			while (true) {
 				System.out.println("Select A AngryBird:");
-				String paintColor = input.next();
-				ColorBrush colorBrush = (ColorBrush) PaintFactory.getColor(paintColor);
-				colorBrush.fruitBasket();
+				String angrybirdColor = input.next();
+				Color color = (Color) PaintFactory.getColor(angrybirdColor);
+				color.fruitBasket();
 			}
 		}
 	}
@@ -24,10 +24,10 @@ interface AngryBird {
 	void fruitBasket();
 }
 
-class ColorBrush implements AngryBird {
+class Color implements AngryBird {
 	private String paintColor;
 
-	public ColorBrush(String paintColor) {
+	public Color(String paintColor) {
 		this.paintColor = paintColor;
 	}
 	public void fruitBasket() {
@@ -36,17 +36,17 @@ class ColorBrush implements AngryBird {
 }
 
 class PaintFactory {
-	private static final HashMap<String, ColorBrush> colorMap = new HashMap<>();
+	private static final HashMap<String, Color> colorMap = new HashMap<>();
 
 	public static AngryBird getColor(String paintColor) {
-		ColorBrush colorBrush = (ColorBrush) colorMap.get(paintColor);
-		if (colorBrush == null) {
-			colorBrush = new ColorBrush(paintColor);
-			colorMap.put(paintColor, colorBrush);
+		Color color = (Color) colorMap.get(paintColor);
+		if (color == null) {
+			color = new Color(paintColor);
+			colorMap.put(paintColor, color);
 			System.out.println("Angry Bird color : " + paintColor);
 		}
 		System.out.println("Angry Birds in Game= "+colorMap);
-		return colorBrush;
+		return color;
 	}
 
 }
