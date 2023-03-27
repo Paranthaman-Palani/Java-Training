@@ -8,8 +8,8 @@ import JDBCUtility.JDBCUtility;
 public class CustomerDAOMain {
 	public static void main(String[] args) {
 
-		int custid;
-		String cusname;
+		int customerid;
+		String customername;
 		String location;
 		String mobilenumber;
 
@@ -30,10 +30,10 @@ public class CustomerDAOMain {
 				System.out.println("****************** ADD RECORD ******************");
 
 				System.out.println("Enter Customer Id : ");
-				custid = scanner.nextInt();
+				customerid = scanner.nextInt();
 
 				System.out.println("Enter Customer Name : ");
-				cusname = scanner.next();
+				customername = scanner.next();
 
 				System.out.println("Enter Customer Location : ");
 				location = scanner.next();
@@ -42,8 +42,8 @@ public class CustomerDAOMain {
 				mobilenumber = scanner.next();
 
 				CustomerDTO dto = CustomerDTO.getInstance();
-				dto.setCustid(custid);
-				dto.setCusname(cusname);
+				dto.setCustomerid(customerid);
+				dto.setCustomername(customername);
 				dto.setLocation(location);
 				dto.setMobilenumber(mobilenumber);
 
@@ -55,16 +55,16 @@ public class CustomerDAOMain {
 
 				System.out.println("****************** DELETE BY ID ******************");
 				System.out.println("Enter Customer ID to delete Customer Record");
-				custid = scanner.nextInt();
-				System.out.println("No of records deleted : " + dao.deleteCustomerDTO(custid , con));
+				customerid = scanner.nextInt();
+				System.out.println("No of records deleted : " + dao.deleteCustomerDTO(customerid , con));
 				break;
 
 			case 3:
 
 				System.out.println("****************** FIND RECORD BY CUSTOMER ID ****************** ");
-				System.out.println("Enter Customer ID to delete Customer Record");
-				custid = scanner.nextInt();
-				CustomerDTO dto1 = dao.findByCustomerID(custid, con);
+				System.out.println("Enter Customer ID");
+				customerid = scanner.nextInt();
+				CustomerDTO dto1 = dao.findByCustomerID(customerid, con);
 				System.out.println(dto1);
 				break;
 
@@ -72,10 +72,10 @@ public class CustomerDAOMain {
 
 				System.out.println("****************** UPDATE ******************");
 				System.out.println("Enter Customer ID to Update Customer location");
-				custid = scanner.nextInt();
+				customerid = scanner.nextInt();
 				System.out.println("Enter Customer New location");
 				location = scanner.next();
-				int records = dao.updateCustomerDTO(custid, location , con);// invid,discount
+				int records = dao.updateCustomerDTO(customerid, location , con);// invid,discount
 				System.out.println(records + " Updated...");
 				break;
 

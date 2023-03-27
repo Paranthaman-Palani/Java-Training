@@ -88,8 +88,13 @@ public class InvoiceTransactionDTO implements Serializable, Cloneable, Comparabl
 		if (getClass() != obj.getClass())
 			return false;
 		InvoiceTransactionDTO other = (InvoiceTransactionDTO) obj;
-		return invid == other.invid && itmid == other.itmid
-				&& Float.floatToIntBits(price) == Float.floatToIntBits(other.price) && qty == other.qty;
+		
+		boolean isInvoiceTransactionTrue = ( invid == other.invid && itmid == other.itmid
+			       && Float.floatToIntBits(price) == Float.floatToIntBits(other.price)
+			       && qty == other.qty);
+
+		
+		return isInvoiceTransactionTrue;
 	}
 
 }

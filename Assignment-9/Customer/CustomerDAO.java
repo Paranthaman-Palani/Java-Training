@@ -5,7 +5,7 @@ import java.util.Collection;
 
 public abstract class CustomerDAO {
 
-	public abstract CustomerDTO findByCustomerID(int custid, Connection con);
+	public abstract CustomerDTO findByCustomerID(int customerid, Connection con);
 
 	public abstract Collection<CustomerDTO> findAll(Connection con);
 
@@ -13,6 +13,6 @@ public abstract class CustomerDAO {
 
 	public abstract int save(CustomerDTO inv, Connection con);
 
-	public abstract int updateCustomerDTO(int custid, String location, Connection con);
+	public abstract int updateCustomerDTO(int customerid, String location, Connection con);
 
 }

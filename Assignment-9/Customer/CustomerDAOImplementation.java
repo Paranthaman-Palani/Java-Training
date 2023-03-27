@@ -47,21 +47,21 @@ public class CustomerDAOImplementation extends CustomerDAO implements Cloneable 
 	}
 
 	@Override
-	public CustomerDTO findByCustomerID(int custid, Connection con) {
+	public CustomerDTO findByCustomerID(int customerid, Connection con) {
 		// TODO Auto-generated method stub
 		try {
 			PreparedStatement ps = con.prepareStatement("select * from customer where custid=?");
-			ps.setInt(1, custid);
+			ps.setInt(1, customerid);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
-				custid = rs.getInt(1);
-				String cusname = rs.getString(2);
+				customerid = rs.getInt(1);
+				String customername = rs.getString(2);
 				String location = rs.getString(3);
 				String mobilenumber = rs.getString(4);
 
 				CustomerDTO dto = CustomerDTO.getInstance();
-				dto.setCustid(custid);
-				dto.setCusname(cusname);
+				dto.setCustomerid(customerid);
+				dto.setCustomername(customername);
 				dto.setLocation(location);
 				dto.setMobilenumber(mobilenumber);
 
@@ -89,8 +89,8 @@ public class CustomerDAOImplementation extends CustomerDAO implements Cloneable 
 
 			while (rs.next()) {
 				CustomerDTO dto = CustomerDTO.getInstance();
-				dto.setCustid(rs.getInt(1));
-				dto.setCusname(rs.getString(2));
+				dto.setCustomerid(rs.getInt(1));
+				dto.setCustomername(rs.getString(2));
 				dto.setLocation(rs.getString(3));
 				dto.setMobilenumber(rs.getString(4));
 				dtoList.add(dto);
@@ -124,8 +124,8 @@ public class CustomerDAOImplementation extends CustomerDAO implements Cloneable 
 		try {
 			PreparedStatement ps = con
 					.prepareStatement(" insert into customer(custid,cusname,loaction,mobilenumber) values(?,?,?,?);");
-			ps.setInt(1, dto.getCustid());
-			ps.setString(2, dto.getCusname());
+			ps.setInt(1, dto.getCustomerid());
+			ps.setString(2, dto.getCustomername());
 			ps.setString(3, dto.getLocation());
 			ps.setString(4, dto.getMobilenumber());
 
@@ -141,12 +141,12 @@ public class CustomerDAOImplementation extends CustomerDAO implements Cloneable 
 	}
 
 	@Override
-	public int updateCustomerDTO(int custid, String location, Connection con) {
+	public int updateCustomerDTO(int customerid, String location, Connection con) {
 		// TODO Auto-generated method stub
 		try {
 			PreparedStatement ps = con.prepareStatement("update customer set loaction=? where custid=?");
 			ps.setString(1, location);
-			ps.setInt(2, custid);
+			ps.setInt(2, customerid);
 			int noOfRowsAffected = ps.executeUpdate();
 			con.commit();
 			return noOfRowsAffected;

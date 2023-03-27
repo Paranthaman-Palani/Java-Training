@@ -92,8 +92,18 @@ public class InvoiceMasterDTO implements Serializable, Cloneable, Comparable<Inv
 		if (getClass() != obj.getClass())
 			return false;
 		InvoiceMasterDTO other = (InvoiceMasterDTO) obj;
-		return amount == other.amount && custid == other.custid && discount == other.discount
-				&& Objects.equals(invdate, other.invdate) && invid == other.invid;
+		
+		boolean isAmountEqual = amount == other.amount;
+		boolean isCustomerIdEqual = custid  == other.custid;
+		boolean isDiscountEqual = discount == other.discount;
+		boolean isInvoiceDateEqual = Objects.equals(invdate, other.invdate);
+		boolean isInvoiceIDEqual = invid == other.invid;
+
+		boolean isTrue = isAmountEqual && isCustomerIdEqual && isDiscountEqual && isInvoiceDateEqual && isInvoiceIDEqual;
+		
+		return isTrue;
+
+
 	}
 
 	@Override

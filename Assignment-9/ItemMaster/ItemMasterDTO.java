@@ -89,8 +89,10 @@ public class ItemMasterDTO implements Serializable, Cloneable, Comparable<ItemMa
 		if (getClass() != obj.getClass())
 			return false;
 		ItemMasterDTO other = (ItemMasterDTO) obj;
-		return itemid == other.itemid && itemname == other.itemname
-				&& Float.floatToIntBits(itemprice) == Float.floatToIntBits(other.itemprice) && unit == other.unit;
+		boolean isTrue = (itemid == other.itemid && itemname == other.itemname
+				&& Float.floatToIntBits(itemprice) == Float.floatToIntBits(other.itemprice) && unit == other.unit);
+        
+		return isTrue;
 	}
 
 }
