@@ -5,59 +5,58 @@ import java.sql.*;
 public class Exercise2 {
 	public static void main(String args[]) {
 		String url = "jdbc:mysql://localhost/assignment8ii";
-		Connection con = null;
-		Statement stmt;
-		PreparedStatement updateSales;
-		PreparedStatement updateTotal;
-		String updateString = "update COFFES set SALES = ? where COF_NAME like ?";
-		String updateStatement = "update COFFES set TOTAL = TOTAL + ? where COF_NAME like ?";
+		Connection connection = null;
+		Statement statement;
+		PreparedStatement preparedStatement1;
+		PreparedStatement preparedStatement2;
+		String salesQuey = "update COFFES set SALES = ? where COF_NAME like ?";
+		String totalQuery = "update COFFES set TOTAL = TOTAL + ? where COF_NAME like ?";
 		String query = "select COF_NAME, SALES, TOTAL from COFFES";
-		
+
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (java.lang.ClassNotFoundException e) {
 			System.err.print("ClassNotFoundException: ");
 			System.err.println(e.getMessage());
 		}
-		
-		try {
-			con = DriverManager.getConnection(url, "root", "barath+;");
 
-			updateSales = con.prepareStatement(updateString);
-			updateTotal = con.prepareStatement(updateStatement);
+		try {
+			connection = DriverManager.getConnection(url, "root", "barath+;");
+
+			preparedStatement1 = connection.prepareStatement(salesQuey);
+			preparedStatement2 = connection.prepareStatement(totalQuery);
 			int[] salesForWeek = { 175, 150, 60, 155, 90 };
 			String[] coffees = { "Colombian", "French_Roast", "Espresso", "Colombian_Decaf", "French_Roast_Decaf" };
-			int len = coffees.length;
-			con.setAutoCommit(false);
-			for (int i = 0; i < len; i++) {
-				updateSales.setInt(1, salesForWeek[i]);
-				updateSales.setString(2, coffees[i]);
-				updateSales.executeUpdate();
-				updateTotal.setInt(1, salesForWeek[i]);
-				updateTotal.setString(2, coffees[i]);
-				updateTotal.executeUpdate();
-				con.commit();
+			connection.setAutoCommit(false);
+			for (int i = 0; i < coffees.length; i++) {
+				preparedStatement1.setInt(1, salesForWeek[i]);
+				preparedStatement1.setString(2, coffees[i]);
+				preparedStatement1.executeUpdate();
+				preparedStatement2.setInt(1, salesForWeek[i]);
+				preparedStatement2.setString(2, coffees[i]);
+				preparedStatement2.executeUpdate();
+				connection.commit();
 			}
-			updateSales.close();
-			updateTotal.close();
+			preparedStatement1.close();
+			preparedStatement2.close();
 
-			con.setAutoCommit(true);
-			stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery(query);
-			while (rs.next()) {
-				String c = rs.getString("COF_NAME");
-				int s = rs.getInt("SALES");
-				int t = rs.getInt("TOTAL");
-				System.out.println(c + " " + s + " " + t);
+			connection.setAutoCommit(true);
+			statement = connection.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+			while (resultSet.next()) {
+				String coffeeName = resultSet.getString("COF_NAME");
+				int sales = resultSet.getInt("SALES");
+				int total = resultSet.getInt("TOTAL");
+				System.out.println(coffeeName + " " + sales + " " + total);
 			}
-			stmt.close();
-			con.close();
+			statement.close();
+			connection.close();
 		} catch (SQLException ex) {
 			System.err.println("SQLException: " + ex.getMessage());
-			if (con != null) {
+			if (connection != null) {
 				try {
 					System.err.println("Transaction is being rolled back");
-					con.rollback();
+					connection.rollback();
 				} catch (SQLException excep) {
 					System.err.print("SQLException: ");
 					System.err.println(excep.getMessage());
