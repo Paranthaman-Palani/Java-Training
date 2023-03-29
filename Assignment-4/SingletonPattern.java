@@ -23,7 +23,6 @@ public class SingletonPattern {
 			MySingleton.getInstance();
 		});
 		es.shutdown();
-
 	}
 }
 

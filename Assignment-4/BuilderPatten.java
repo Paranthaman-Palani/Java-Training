@@ -7,8 +7,7 @@ package assignment4;
 
 public class BuilderPatten {
 	public static void main(String[] args) {
-		College veltech = new College.AttendancePortal().studentLogin(new Student()).facultyLogin(null)
-				.applicationStart();
+		College veltech = new College.AttendancePortal().studentLogin(new Student()).facultyLogin(null).applicationStart();
 	}
 }
 

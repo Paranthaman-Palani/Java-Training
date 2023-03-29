@@ -2,71 +2,73 @@ package assignment4;
 
 public class FactoryPattern {
 	public static void main(String[] args) throws Exception {
-		PhoneManufacturer phone = new PhoneManufacturer();
-		MobileFactory google = new RedmiPhone();
-		phone.setPhoneFactory(google);
-		Mobile mobile = phone.getPhone();
-		System.out.println(mobile);
+		PhoneManufacturer redmi = new PhoneManufacturer();
+		OSFactory osFactory = new AndroidOSFactory();
+		redmi.setOSFactory(osFactory);
+		OS os = redmi.getOS();
+		System.out.println(os);
 	}
 }
 
-interface Manufacturer {
-}
 
-class PhoneManufacturer implements Manufacturer {
-	private MobileFactory phoneFactory;
-	private Mobile mobile;
+class PhoneManufacturer {
+	private OSFactory osFactory;
+	private OS os;
 
-	public void setPhoneFactory(MobileFactory phoneFactory) {
-		this.phoneFactory = phoneFactory;
+	public void setOSFactory(OSFactory osFactory) {
+		this.osFactory = osFactory;
 	}
 
-	public Mobile getPhone() {
-		this.mobile = phoneFactory.makePhone();
-		return mobile;
+	public OS getOS() {
+		this.os = osFactory.makeOS();
+		return os;
 	}
 }
 
-interface Factory {
+
+
+abstract class OSFactory {
+	public abstract OS makeOS();
 }
 
-abstract class MobileFactory implements Factory {
-	public abstract Mobile makePhone();
-}
+class iOSFactory extends OSFactory {
+	iOSFactory() {
+	}
 
-class RealmePhone extends MobileFactory {
-	
-
-	public Realme makePhone() {
-		return new Realme();
+	public iOS makeOS() {
+		return new iOS();
 	}
 }
 
-class OnePlusPhone extends MobileFactory {
+class AndroidOSFactory extends OSFactory {
+	public AndroidOSFactory() {
+	}
 
-	public OnePlus makePhone() {
-		return new OnePlus();
+	public AndroidOS makeOS() {
+		return new AndroidOS();
 	}
 }
 
-class RedmiPhone extends MobileFactory {
+class WindowsOSFactory extends OSFactory {
+	public WindowsOSFactory() {
+	}
 
-	public Redmi makePhone() {
-		return new Redmi();
+	public WindowsOS makeOS() {
+		return new WindowsOS();
 	}
 }
 
-abstract class Mobile {
+
+abstract class OS {
 }
 
-class Realme extends Mobile {
+class iOS extends OS {
 }
 
-class OnePlus extends Mobile {
+class AndroidOS extends OS {
 }
 
-class Redmi extends Mobile {
+class WindowsOS extends OS {
 }
-
 
 
