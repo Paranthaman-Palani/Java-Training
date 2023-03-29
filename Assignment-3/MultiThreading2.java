@@ -7,7 +7,7 @@ public class MultiThreading2 {
 
 	public static void main(String[] args) {
 
-		ExecutorService executeService = Executors.newFixedThreadPool(3);
+		ExecutorService executeService = Executors.newFixedThreadPool(1);
 		synchronized (AccessingThread.class) {
 			executeService.execute(() -> {
 				AccessingThread.display("[--------");

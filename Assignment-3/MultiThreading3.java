@@ -1,5 +1,6 @@
 package assignment3;
 
+import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -9,19 +10,31 @@ public class MultiThreading3 {
 
 		ExecutorService es = Executors.newFixedThreadPool(2);
 
-		es.execute(() -> {
-			Thread.currentThread().setName("Producer");
-			synchronized (store) {
-				store.add();
-			}
-		});
+		try (Scanner scanner = new Scanner(System.in)) {
+			while (true) {
+				int input = scanner.nextInt();
 
-		es.execute(() -> {
-			Thread.currentThread().setName("Consumer");
-			synchronized (store) {
-				store.take();
+				if (input == 1) {
+
+					es.execute(() -> {
+						Thread.currentThread().setName("Producer");
+						synchronized (store) {
+							store.add();
+						}
+					});
+
+					es.execute(() -> {
+						Thread.currentThread().setName("Consumer");
+						synchronized (store) {
+							store.take();
+						}
+					});
+				} else {
+					es.shutdown();
+				}
+
 			}
-		});
+		}
 
 	}
 }
@@ -29,10 +42,11 @@ public class MultiThreading3 {
 class Inventory {
 	boolean flag;
 
-	synchronized public void add() {
+	public void add() {
 		if (flag) {
 			try {
 				wait();
+
 			} catch (Exception e) {
 			}
 		}
@@ -41,9 +55,10 @@ class Inventory {
 		notify();
 	}
 
-	synchronized public void take() {
+	public void take() {
 		if (!flag) {
 			try {
+
 				wait();
 			} catch (Exception e) {
 			}
@@ -51,6 +66,11 @@ class Inventory {
 		System.out.println("Take One Product form Inventory...");
 		flag = false;
 		notify();
+		try {
+			Thread.sleep(1000);
+		} catch (Exception e) {
+
+		}
 	}
 
 }

@@ -23,7 +23,6 @@ public class MultiThreading7 {
 class Counting {
 	public void counter() throws InterruptedException {
 		for (int i = 1; i <= 100; i++) {
-
 			System.out.println(i);
 			Thread.sleep(1000);
 			if (i % 10 == 0) {

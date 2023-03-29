@@ -24,7 +24,7 @@ public class MultiThreading1 {
 
 class OddEvenExecution {
 
-	synchronized public void oddNumbers() {
+	 synchronized public void oddNumbers() {
 		// TODO Auto-generated method stub
 		System.out.println("Odd Numbers:");
 		for (int i = 1; i < 100; i = i + 2) {
@@ -33,7 +33,7 @@ class OddEvenExecution {
 		System.out.println();
 	}
 
-	synchronized public void evenNumbers() {
+	 synchronized public void evenNumbers() {
 		// TODO Auto-generated method stub
 		System.out.println("\nEven Numbers:");
 		for (int i = 2; i < 100; i = i + 2) {
